@@ -1,25 +1,24 @@
 services:
   hive:
-    image: apache/hive
+    image: apache/hive:4.0.0
     ports:
     - 10000:10000
     - 10002:10002
     environment:
       - SERVICE_NAME=HIVESERVER2
-    
 
   imapala:
     image: apache/impala
 
   spark:
-    image: spark
+    image: spark:latest
     command: /opt/spark/bin/spark-shell
 
   hadoop:
-    image: apache/hadoop
+    image: apache/hadoop:3
     ports:
     - 9870:9870
     - 8088:8088
 
   flume:
-    image:
+    build: ./flume

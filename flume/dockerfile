@@ -1,0 +1,11 @@
+FROM ubuntu:22.04 AS build
+
+# Instalando dependências e ferramentas úteis
+RUN apt update && apt upgrade -y
+RUN apt install -y wget openjdk-8-jre
+
+# Baixando o binário do flume
+WORKDIR /opt/flume
+RUN wget -O apache-flume.tar.gz https://dlcdn.apache.org/flume/1.11.0/apache-flume-1.11.0-bin.tar.gz
+RUN tar xvf apache-flume.tar.gz
+ENV PATH="/opt/flume/apache-flume-1.11.0-bin/:$PATH"
